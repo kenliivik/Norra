@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Perekonna Autoreis · Juuli 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+/* ╔══════════════════════════════════════════════╗
+   ║  DESIGN SYSTEM · NORDIC DARK NIGHT           ║
+   ╚══════════════════════════════════════════════╝ */
+:root {
+  color-scheme: dark;
+  --in-oklab: in oklab;
+
+  /* Premium OKLCH Color Palette */
+  --bg-main: oklch(14% 0.015 240);
+  --bg-surface: oklch(19% 0.02 240);
+  --bg-surface-raised: oklch(24% 0.025 240);
+  --border-subtle: oklch(28% 0.02 240);
+  --border-focus: oklch(50% 0.08 240);
+
+  /* Typography Colors (Ensuring high contrast >= 4.5:1) */
+  --text-primary: oklch(96% 0.005 240);
+  --text-secondary: oklch(82% 0.015 240);
+  --text-muted: oklch(65% 0.02 240);
+
+  /* Country & Component Accents */
+  --accent-ee: oklch(68% 0.08 190);      /* Glacier Blue */
+  --accent-se: oklch(65% 0.14 240);      /* Nordic Blue */
+  --accent-no: oklch(58% 0.20 25);       /* Norway Crimson */
+  --accent-ferry: oklch(50% 0.10 210);   /* Marine Teal */
+  --accent-note: oklch(78% 0.12 85);      /* Warm Timber Amber */
+
+  --font-sans: 'DM Sans', -apple-system, sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+}
+
+/* ── BASE & RESET ────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background-color: oklch(8% 0.01 240); /* Fallback dark outer fill */
+  scrollbar-color: var(--border-subtle) transparent;
+  scrollbar-width: thin;
+}
+
+body {
+  background: var(--bg-main);
+  background-image: radial-gradient(circle at 50% 0%, oklch(18% 0.02 240), var(--bg-main));
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 480px; /* Constrained mobile view frame on desktop */
+  margin: 0 auto;
+  min-height: 100vh;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── TYPOGRAPHY UTILITIES ────────────────────── */
+h1, h2, h3, .serif-heading {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p, li {
+  text-wrap: pretty;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: oklch(19% 0.02 240 / 82%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background 0.3s;
+}
+
+.header-inner {
+  padding: 16px 16px 12px;
+}
+
+.header-kicker {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.header-title {
+  font-size: 32px;
+  line-height: 1.1;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.header-title em {
+  font-style: normal;
+  color: var(--accent-no);
+  font-weight: 400;
+}
+
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 11px;
+}
+
+.meta-pill {
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 3px 8px;
+  color: var(--text-secondary);
+}
+
+.meta-separator {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  opacity: 0.3;
+}
+
+/* ── SEARCH BAR ──────────────────────────────── */
+.search-wrapper {
+  padding: 0 16px 12px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: oklch(12% 0.01 240);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 8px 12px;
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.search-bar:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px oklch(50% 0.08 240 / 15%);
+}
+
+.search-bar svg {
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+
+#search {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: 13.5px;
+  font-family: var(--font-sans);
+  font-weight: 300;
+  -webkit-appearance: none;
+}
+
+#search::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+#clearBtn {
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 10px;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+#clearBtn:active {
+  background: var(--border-subtle);
+}
+
+#clearBtn.vis {
+  display: flex;
+}
+
+/* ── INTERACTIVE COUNTRY STRIP ────────────────── */
+.country-strip {
+  display: flex;
+  gap: 8px;
+  padding: 0 16px 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.country-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.country-chip {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 30px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.country-chip:active {
+  transform: scale(0.95);
+}
+
+.country-chip.active {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  background: var(--bg-surface-raised);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.country-chip[data-filter="EE"].active {
+  border-color: var(--accent-ee);
+  background: oklch(from var(--accent-ee) l c h / 10%);
+}
+
+.country-chip[data-filter="SE"].active {
+  border-color: var(--accent-se);
+  background: oklch(from var(--accent-se) l c h / 10%);
+}
+
+.country-chip[data-filter="NO"].active {
+  border-color: var(--accent-no);
+  background: oklch(from var(--accent-no) l c h / 10%);
+}
+
+/* ── MAIN ────────────────────────────────────── */
+main {
+  flex: 1;
+  padding: 8px 0 56px;
+}
+
+.no-results {
+  display: none;
+  text-align: center;
+  padding: 48px 24px;
+  font-family: var(--font-serif);
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.no-results.vis {
+  display: block;
+}
+
+/* ── ACCORDION STOP CARD ─────────────────────── */
+.stop {
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-main);
+  transition: background-color 0.25s;
+}
+
+.stop.hidden {
+  display: none;
+}
+
+/* Details + Summary resets */
+details.stop-details {
+  width: 100%;
+}
+
+summary.stop-summary {
+  list-style: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: 48px 1fr 24px;
+  gap: 14px;
+  align-items: center;
+  padding: 16px;
+  background: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+summary.stop-summary::-webkit-details-marker {
+  display: none;
+}
+
+summary.stop-summary:active {
+  background-color: var(--bg-surface);
+  transform: scale(0.99);
+}
+
+details.stop-details[open] summary.stop-summary {
+  background-color: oklch(from var(--bg-surface) l c h / 40%);
+}
+
+/* Badge and Flag layout */
+.stop-badge-container {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stop-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface-raised);
+  border: 1.5px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s;
+}
+
+/* Dynamic color coding on the badge border instead of side stripes */
+.stop[data-country="SE"] .stop-badge { border-color: var(--accent-se); }
+.stop[data-country="NO"] .stop-badge { border-color: var(--accent-no); }
+.stop[data-country="FERRY"] .stop-badge { border-color: var(--accent-ferry); }
+
+.stop-flag {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 13px;
+  line-height: 1;
+  background: var(--bg-main);
+  border-radius: 50%;
+  padding: 1px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Stop Meta Info */
+.stop-meta {
+  padding-right: 4px;
+}
+
+.stop-date {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Dynamic date highlights */
+.stop[data-country="SE"] .stop-date { color: var(--accent-se); }
+.stop[data-country="NO"] .stop-date { color: var(--accent-no); }
+.stop[data-country="FERRY"] .stop-date { color: var(--accent-ferry); }
+
+.stop-title {
+  font-size: 19px;
+  line-height: 1.25;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.stop-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.stop-accom {
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stop-accom span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* Chevron */
+.chevron {
+  color: var(--text-muted);
+  opacity: 0.6;
+  font-size: 16px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+  line-height: 1;
+}
+
+details.stop-details[open] .chevron {
+  transform: rotate(180deg);
+  color: var(--text-primary);
+  opacity: 1;
+}
+
+/* ── SMOOTH ACCORDION HEIGHT ANIMATION ────────── */
+details.stop-details .card-content-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+details.stop-details[open] .card-content-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.card-content-inner {
+  min-height: 0; /* Necessary for grid-template-rows animation */
+}
+
+.card-body {
+  background: oklch(11% 0.01 240);
+  border-top: 1px solid var(--border-subtle);
+  padding: 20px 16px 24px;
+}
+
+/* ── PREMIUM NAVIGATION BUTTONS (WAZE & MAPS) ── */
+.nav-buttons {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--bg-surface-raised);
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+
+.btn-primary:active {
+  background: var(--border-subtle);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-secondary);
+  border-color: var(--border-subtle);
+}
+
+.btn-secondary:active {
+  background: oklch(from var(--bg-surface) l c h / 30%);
+}
+
+.btn-icon {
+  flex-shrink: 0;
+}
+
+/* ── SECTIONS INSIDE DETAILS ─────────────────── */
+.section {
+  margin-bottom: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border-subtle);
+}
+
+.section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.section-head {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.head-drive   { color: var(--accent-ee); }
+.head-park    { color: var(--accent-se); }
+.head-food    { color: var(--accent-no); }
+.head-toddler { color: oklch(75% 0.10 150); } /* Custom Sage Green */
+.head-note    { color: var(--accent-note); }
+
+.section-body {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.section-body strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── MODERN COMPACT LISTS ────────────────────── */
+ul.items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+ul.items li {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  padding-left: 16px;
+  position: relative;
+}
+
+ul.items li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+}
+
+.stop[data-country="SE"] ul.items li::before { background: var(--accent-se); }
+.stop[data-country="NO"] ul.items li::before { background: var(--accent-no); }
+.stop[data-country="FERRY"] ul.items li::before { background: var(--accent-ferry); }
+
+ul.items li strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* Nested day schedule items */
+ul.days {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ul.days li {
+  font-size: 13.5px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding-left: 14px;
+  border-left: 1.5px solid var(--border-subtle);
+  transition: border-color 0.3s;
+}
+
+.stop[data-country="SE"] ul.days li { border-left-color: var(--accent-se); }
+.stop[data-country="NO"] ul.days li { border-left-color: var(--accent-no); }
+
+ul.days li strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.day-tag {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background: var(--bg-surface-raised);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+/* ── PREMIUM CALLOUT ALERTS (NO LEFT BORDERS) ── */
+.alert {
+  border-radius: 12px;
+  border: 1px solid oklch(from var(--accent-note) l c h / 30%);
+  background: oklch(from var(--accent-note) l c h / 7%);
+  padding: 14px 16px;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.alert strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+/* ── BOARDING CARD FERRY BLOCKS ──────────────── */
+.ferry-card {
+  border-radius: 12px;
+  background: oklch(from var(--accent-ferry) l c h / 7%);
+  border: 1px solid oklch(from var(--accent-ferry) l c h / 30%);
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ferry-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.ferry-title {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.ferry-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+/* ── CHECK-IN ROW (TICKETS DISPLAY) ──────────── */
+.checkin-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.checkin-chip {
+  flex: 1;
+  background: var(--bg-surface-raised);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+.checkin-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+
+.checkin-time {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--text-primary);
+}
+
+/* ── FOOTER & LEGEND ─────────────────────────── */
+.legend {
+  display: flex;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  margin-top: 24px;
+}
+
+.legend-item {
+  flex: 1;
+  padding: 12px 4px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.legend-item:last-child {
+  border-right: none;
+}
+
+.legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+footer {
+  padding: 20px 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-surface);
+}
+
+/* Focus and Interactive states */
+:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="header-kicker">11.–24. juuli 2025</div>
+    <h1 class="header-title">Eesti → <em>Norra</em> → Rootsi</h1>
+    <div class="header-meta">
+      <span class="meta-pill">13 päeva</span>
+      <span class="meta-separator"></span>
+      <span class="meta-pill">7 peatust</span>
+      <span class="meta-separator"></span>
+      <span class="meta-pill">2 praamiõitu</span>
+    </div>
+  </div>
+  
+  <div class="search-wrapper">
+    <div class="search-bar">
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="6.5" cy="6.5" r="5"/>
+        <line x1="10.5" y1="10.5" x2="14" y2="14"/>
+      </svg>
+      <input type="search" id="search" placeholder="Otsi linna, tegevust, majutust..." autocomplete="off" autocorrect="off" spellcheck="false">
+      <button id="clearBtn" aria-label="Tühista">✕</button>
+    </div>
+  </div>
+
+  <div class="country-strip">
+    <div class="country-chip" data-filter="EE">🇪🇪 Eesti / Praam</div>
+    <div class="country-chip" data-filter="SE">🇸🇪 Rootsi</div>
+    <div class="country-chip" data-filter="NO">🇳🇴 Norra</div>
+  </div>
+</header>
+
+<main id="main">
+<div id="noResults" class="no-results">Selle otsinguga peatusi ei leitud.</div>
+
+<!-- ══ VÄLJUMISLAEV ══════════════════════════════ -->
+<div class="stop" data-country="FERRY" data-search="väljumine praam tallinn stockholm rootsi kruiisilaev öö kajut 18:00 10:30">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">⛴</div>
+        <div class="stop-flag">🇪🇪</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">R–L 11.–12. juuli · Väljumine</div>
+        <h2 class="stop-title">Tallinn → Stockholm</h2>
+        <div class="stop-subtitle">Rootsi kruiisilaev · väljub 18:00, saabub 10:30</div>
+        <div class="stop-accom"><span>🛏</span>Laeva kajut · sisseregistreerimine 10:30</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+          <div class="ferry-card">
+            <div class="ferry-icon">⛴️</div>
+            <div>
+              <div class="ferry-title">Väljumispäev</div>
+              <div class="ferry-sub">Tallinn → Stockholm · Rootsi kruiisilaev</div>
+            </div>
+          </div>
+          <div class="checkin-row">
+            <div class="checkin-chip">
+              <div class="checkin-label">Väljub</div>
+              <div class="checkin-time">18:00</div>
+            </div>
+            <div class="checkin-chip">
+              <div class="checkin-label">Saabub</div>
+              <div class="checkin-time">10:30</div>
+            </div>
+          </div>
+          <div class="alert">
+            ⚠️ Hoia <strong>praamibroneering</strong> kergesti kättesaadav. Sõiduki registreerimine ja passid valmis juba väravas.
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 1 · STOCKHOLM → ÖREBRO ════════════ -->
+<div class="stop" data-country="SE" data-search="peatus 1 stockholm örebro rootsi norrtälje café hörnan hommikusöök fratelli stadsparken mänguväljak scandic central örebro loss castle">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">1</div>
+        <div class="stop-flag">🇸🇪</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">L 12. juuli · 1. peatus</div>
+        <h2 class="stop-title">Stockholm → Örebro</h2>
+        <div class="stop-subtitle">Rootsi · ~2 tundi sõitu</div>
+        <div class="stop-accom"><span>🛏</span>Scandic Örebro Central · 15:00 / 12:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=59.28024,15.21461&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.28024,15.21461" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Praam saabub Stockholmi kell 10:30. Sõida otse ~2 tundi edelasse Örebrosse. Öömaja: <strong>Scandic Örebro Central</strong>, otse rongijaama kõrval.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Scandic Örebro Central:</strong> Hotelli parkla otse juures</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li>🍝 <strong>Õhtusöök — Fratelli Örebro</strong>: lõdvestunud itaalia restoran</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="items">
+              <li><strong>Örebro loss</strong> — avatud 10:00–17:00, ilus keskaegne kindlus jõe keskel</li>
+              <li><strong>Stadsparken</strong> — suur roheline park eraldi <strong>väikelaste turvaala</strong> mänguväljakuga; täiesti tasane ja vankrisõbralik</li>
+              <li>Õhtune jalutuskäik <strong>jõe ääres</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 2 · ÖREBRO → TØNSBERG ════════════ -->
+<div class="stop" data-country="NO" data-search="peatus 2 örebro tønsberg norra halden fredriksten fortress orje wilhelmsen brygge promenaad foyn slottsfjellet verdens ende">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">2</div>
+        <div class="stop-flag">🇳🇴</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">P 13. juuli · 2. peatus</div>
+        <h2 class="stop-title">Örebro → Tønsberg</h2>
+        <div class="stop-subtitle">Norra · ~5 tundi sõitu</div>
+        <div class="stop-accom"><span>🛏</span>Wilhelmsen House · 15:00 / 11:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=59.2716,10.4156&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.2716,10.4156" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Sõida läände läbi Rootsi, piiri ületades Norrasse, seejärel lõunasse. Lühemate sõitude jaoks sõida läbi <strong>Orje</strong>. Öömaja: <strong>Wilhelmsen House</strong>, Halfdan Wilhelmsens Allé 22.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-note">📍 Teepeatus</div>
+            <ul class="items">
+              <li><strong>Fredriksten Fortress</strong>, Halden — väike peatus teel; iidne kindlus linnuse varemete ja vaatega</li>
+              <li><strong>Verdens Ende</strong> — ilus mereäärne koht, kui aega on</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Wilhelmsen House:</strong> Suur parkla otse hoone kõrval — suurte sõidukite jaoks ideaalne</li>
+              <li>Varuvariant: avatud parklad <strong>Nedre Langgate'i</strong> lähedal</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Foyn</strong>, Tønsberg Brygge — suur välisterass, mürasõbralik, vaade sadamale</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="items">
+              <li><strong>Tønsberg Brygge promenaad</strong> — tasane vankrikõnd mööda kaid, paadid</li>
+              <li><strong>Slottsfjellet'i jalamil</strong> — avatud muruala kindlusemäe jalamil</li>
+              <li>Ujumine sadamapiirkonnas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 3 · TØNSBERG → KRISTIANSAND ═══════ -->
+<div class="stop" data-country="NO" data-search="peatus 3 tønsberg kristiansand norra jossingfjord sogndalstrand dyreparken loomaaed fiskebrygga bystranda rand mänguväljak åros feriesenter kämping">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">3</div>
+        <div class="stop-flag">🇳🇴</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">E–N 14.–17. juuli · 3. peatus · 3 ööd</div>
+        <h2 class="stop-title">Tønsberg → Kristiansand</h2>
+        <div class="stop-subtitle">Norra · ~2,5 tundi sõitu</div>
+        <div class="stop-accom"><span>🏕</span>Åros Feriesenter kämping</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=58.0789,7.8253&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=58.0789,7.8253" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">~2,5-tunnine sõit mööda Norra rannikut lõunasse. <strong>3 täit päeva</strong> Kristiansandis. Öömaja: <strong>Åros Feriesenter</strong> kämping — 15 min Kristiansandi kesklinnast, otse ranniku ääres.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-note">📍 Teepeatus</div>
+            <ul class="items">
+              <li><strong>Jossingfjord</strong> — kaunis fjord teel, sobib veniva pausi jaoks</li>
+              <li>või <strong>Sogndalstrand</strong> — väike traditsiooniline kaluriküla</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Åros Feriesenter:</strong> Suur parkla otse kämpingul — suurte sõidukite jaoks ideaalne</li>
+              <li><strong>Dyreparken:</strong> Spetsiaalne parkla, järgi viitasid</li>
+              <li><strong>Fiskebrygga:</strong> Tohutu pindparklad kanali kõrval</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Fiskebrygga</strong> — mitteametlik, avatud kanali ääres söömine</li>
+              <li>Kämpingu kohvik ja kiosk kohapeal</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="days">
+              <li>
+                <div class="day-tag">1. päev · 14. juuli</div>
+                <div><strong>Kristiansand Dyreparken</strong> — suurepärane loomaaed, <strong>100% vankrisõbralik</strong>, eraldi väikelaste linnad. <em>Osta piletid ette!</em></div>
+              </li>
+              <li>
+                <div class="day-tag">2. päev · 15. juuli</div>
+                <div><strong>Bystranda linnaranna promenaad</strong> — tasane kõnnitee ranna ääres koos mänguväljakuga</div>
+              </li>
+              <li>
+                <div class="day-tag">3. päev · 16. juuli</div>
+                <div><strong>Puhkepäev kämpingus</strong> — rand, köisredelipark, minigolf ja kuumaveebassein kohapeal</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 4 · KRISTIANSAND → STAVANGER ══════ -->
+<div class="stop" data-country="NO" data-search="peatus 4 kristiansand stavanger norra jossingfjord sogndalstrand naftamuuseum lysefjord kruiis fargegaten forus playground scandic park">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">4</div>
+        <div class="stop-flag">🇳🇴</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">N–L 17.–19. juuli · 4. peatus · 2 ööd</div>
+        <h2 class="stop-title">Kristiansand → Stavanger</h2>
+        <div class="stop-subtitle">Norra · ~3,5 tundi sõitu</div>
+        <div class="stop-accom"><span>🛏</span>Scandic Stavanger Park · 16:00 / 12:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=58.9694,5.7286&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=58.9694,5.7286" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">~3,5-tunnine sõit läände. Öömaja: <strong>Scandic Stavanger Park</strong>, Prestegardsbakken 1 — otse kesklinna pargis.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Scandic Stavanger Park:</strong> Hotelli parklad lähedal</li>
+              <li><strong>Playground Forus:</strong> Tohutu tasuta parkla</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Bøker og Børst</strong>, Fargegaten (värviline tänav) — ainult jalakäijatele, ohutu väikelapsele</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="days">
+              <li>
+                <div class="day-tag">1. päev · 17. juuli</div>
+                <div><strong>Norra Naftamuuseum</strong> + <strong>Gamle Stavanger</strong> (vanalinn) + sadam + kesklinn</div>
+              </li>
+              <li>
+                <div class="day-tag">2. päev · 18. juuli</div>
+                <div><strong>Lysefjordi elektriline kruiis</strong> — täiesti vaikne, vankrisõbralik, zero matkamist, Preikestoleni vaated alt. <em>Osta piletid ette!</em></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 5 · STAVANGER → ODDA ══════════════ -->
+<div class="stop" data-country="NO" data-search="peatus 5 stavanger odda norra hardangerfjord langfoss juga låtefossen sandvinvatnet odda grillen asian wok ulvik kämping">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">5</div>
+        <div class="stop-flag">🇳🇴</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">L–E 19.–21. juuli · 5. peatus · 2 ööd</div>
+        <h2 class="stop-title">Stavanger → Odda</h2>
+        <div class="stop-subtitle">Norra · ~3,5 tundi · Hardangerfjord</div>
+        <div class="stop-accom"><span>🏕</span>Ulvik kämping</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=60.0691,6.5461&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=60.0691,6.5461" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Imeline sõit kirdesse läbi Hardangerfjordi — üks Norra maalilisemaid teid. ~3,5 tundi + praamiületused. Öömaja: <strong>Ulvik kämping</strong>.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-note">📍 Teepeatus</div>
+            <ul class="items">
+              <li><strong>Langfoss</strong> — suurejooneline juga otse tee ääres, tasub peatuda</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Linn:</strong> Hardangerfjordi keskuse avalikud parklad</li>
+              <li><strong>Låtefossen:</strong> Kruusatee peatuskoht otse juga juures — <strong>väldi kitsaid tagumisi alleesid</strong></li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Odda Grillen</strong> — kiire, pretensioonidevaba</li>
+              <li><strong>Asian Wok Odda</strong> — kiire, soodne</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="days">
+              <li>
+                <div class="day-tag">1. päev · 19. juuli</div>
+                <div><strong>Låtefosseni juga</strong> — vaadatav otse autost/vankrilt; <strong>Sandvinvatnet'i järve rada</strong> — sillutatud, tasane</div>
+              </li>
+              <li>
+                <div class="day-tag">2. päev · 20. juuli</div>
+                <div>Hommikune sõit mööda <strong>Sørfjordi</strong> — maaliline fjordiäärne tee</div>
+              </li>
+              <li>
+                <div class="day-tag">Õhtu</div>
+                <div><strong>Fjordiäärne jalutuskäik</strong> Odda ümbruses</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 6 · ODDA → RJUKAN ═════════════════ -->
+<div class="stop" data-country="NO" data-search="peatus 6 odda rjukan norra vøringsfossen juga krossobanen gaustabanen rong mägi smak cafe kiwi coop rjukan hotell">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">6</div>
+        <div class="stop-flag">🇳🇴</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">T 21. juuli · 6. peatus</div>
+        <h2 class="stop-title">Odda → Rjukan</h2>
+        <div class="stop-subtitle">Norra · ~3,5 tundi sõitu</div>
+        <div class="stop-accom"><span>🛏</span>Rjukan hotell · 15:00 / 11:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=59.8794,8.6076&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.8794,8.6076" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Sõida ~3,5 tundi itta läbi mäekuruude. Rjukan on dramaatiline WWII ajaloo linn sügavas mäeorus.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-note">📍 Teepeatus</div>
+            <ul class="items">
+              <li><strong>Vøringsfossen</strong> — üks Norra kuulsamaid jugasid, kindlasti tasub peatuda teel</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li>Suur avatud parkla <strong>Krossobanen'i köistee jalamil</strong></li>
+              <li><strong>Gaustabanen:</strong> Parkla otse rongijaama juures</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Smak Cafe</strong> — lõdvestunud kohalik kohvik</li>
+              <li>Piknik varudega <strong>Kiwist või Coopist</strong></li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="items">
+              <li><strong>Gaustabanen</strong> — rongiga sõit mäe sees! Unikaalne kogemus, <strong>kindel must-do.</strong> <em>Osta piletid ette!</em></li>
+              <li><strong>Krossobanen köistee</strong> — gondel mäetippu, sillutatud panoraavvaatlusplats vankriga navigeeritav</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ PEATUS 7 · RJUKAN → KARLSTAD ════════════ -->
+<div class="stop" data-country="SE" data-search="peatus 7 rjukan karlstad rootsi mariebergsskogen park lillskogen loomaaed klarälven jõgi promenaad kohvikud scandic winn">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">7</div>
+        <div class="stop-flag">🇸🇪</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">K 22. juuli · 7. peatus</div>
+        <h2 class="stop-title">Rjukan → Karlstad</h2>
+        <div class="stop-subtitle">Rootsi · ~5,5 tundi sõitu</div>
+        <div class="stop-accom"><span>🛏</span>Scandic Winn · 15:00 / 11:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+
+          <div class="nav-buttons">
+            <a href="waze://?ll=59.382841,13.504901&navigate=yes" class="btn btn-primary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 40 40" fill="none">
+                <circle cx="20" cy="20" r="20" fill="currentColor"/>
+                <path d="M20 7C13.4 7 8 12 8 18.2c0 4 2.1 7.6 5.3 9.7L12 32l5.2-1.6c.9.2 1.8.4 2.8.4 6.6 0 12-5 12-11.2S26.6 7 20 7z" fill="var(--bg-main)"/>
+                <circle cx="16" cy="18" r="1.8" fill="currentColor"/>
+                <circle cx="24" cy="18" r="1.8" fill="currentColor"/>
+                <path d="M16 22c1.1 1.4 2.8 2.2 4 2.2s2.9-.8 4-2.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              </svg>
+              <span>Waze</span>
+            </a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.382841,13.504901" target="_blank" class="btn btn-secondary">
+              <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span>Google Maps</span>
+            </a>
+          </div>
+
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Pikim sõidupäev — ~5,5 tundi. Pöördu tagasi Rootsi, sõites itta. Öömaja: <strong>Scandic Winn</strong>, Norra Strandgatan 9–11, otse Klarälveni jõe ääres.</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-park">🅿️ Parkimine</div>
+            <ul class="items">
+              <li><strong>Scandic Winn:</strong> Tasulised parklad hotellist kohe vastas (Easy Park)</li>
+              <li><strong>Mariebergsskogen:</strong> Tohutu spetsiaalne parkla otse pargi juures</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-food">🍔 Toit</div>
+            <ul class="items">
+              <li><strong>Brasserie Winn</strong> hotellis — Värmlandi kohalikud road</li>
+              <li>Lõdvestunud <strong>jõeäärsed kohvikud</strong> Klarälveni promenaadil</li>
+            </ul>
+          </div>
+          <div class="section">
+            <div class="section-head head-toddler">👶 Tegevused</div>
+            <ul class="items">
+              <li><strong>Mariebergsskogen park</strong> — tasuta sissepääs; <strong>Lillskogeni kontaktloomaaed</strong> tavaloomadega, sile mänguväljak, vankrisõbralikud rajad</li>
+              <li><strong>Klarälveni jõe äärne promenaad</strong> — väikesed väljakud, kohvikud, sadamapiirkond</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<!-- ══ TAGASIÕIT ══════════════════════════════════ -->
+<div class="stop" data-country="FERRY" data-search="tagasiõit praam karlstad stockholm tallinn eesti kruiisilaev 17:30 11:00 gamla stan skansen junibacken">
+  <details class="stop-details">
+    <summary class="stop-summary">
+      <div class="stop-badge-container">
+        <div class="stop-badge">⛴</div>
+        <div class="stop-flag">🇪🇪</div>
+      </div>
+      <div class="stop-meta">
+        <div class="stop-date">N–R 23.–24. juuli · Tagasiõit</div>
+        <h2 class="stop-title">Karlstad → Stockholm → Tallinn</h2>
+        <div class="stop-subtitle">Rootsi kruiisilaev · väljub 17:30, saabub 11:00</div>
+        <div class="stop-accom"><span>🛏</span>Laeva kajut · sisseregistreerimine 11:00</div>
+      </div>
+      <div class="chevron">⌄</div>
+    </summary>
+    <div class="card-content-wrapper">
+      <div class="card-content-inner">
+        <div class="card-body">
+          <div class="ferry-card">
+            <div class="ferry-icon">🏠</div>
+            <div>
+              <div class="ferry-title">Kodu poole</div>
+              <div class="ferry-sub">Stockholm → Tallinn · Rootsi kruiisilaev</div>
+            </div>
+          </div>
+          <div class="checkin-row">
+            <div class="checkin-chip">
+              <div class="checkin-label">Väljub</div>
+              <div class="checkin-time">17:30</div>
+            </div>
+            <div class="checkin-chip">
+              <div class="checkin-label">Saabub</div>
+              <div class="checkin-time">11:00</div>
+            </div>
+          </div>
+          <div class="alert">
+            ⚠️ Hoia <strong>tagasiõidu praamibroneeringu kinnitus</strong> käepärast. Sõida otse Stockholmi terminali — arvesta aega liikluse jaoks.
+          </div>
+          <div class="section">
+            <div class="section-head head-drive">🚙 Sõiduinfo</div>
+            <div class="section-body">Karlstad → Stockholm ~3,5 tundi. Sõida otse <strong>Stockholmi praamiterminali</strong> (kontrolli täpne terminal broneeringult). Lahku varakult!</div>
+          </div>
+          <div class="section">
+            <div class="section-head head-note">📍 Stockholmi aeg enne laeva</div>
+            <ul class="items">
+              <li><strong>Gamla Stan</strong> — keskaegne vanalinn, jalutuskäik</li>
+              <li><strong>Skansen</strong> — avamuureum ja loomaaed</li>
+              <li><strong>Junibacken</strong> — Astrid Lindgreni temaatiline muuseum lastele</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </details>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent-ferry)"></div>Praam</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent-no)"></div>Norra</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--accent-se)"></div>Rootsi</div>
+</div>
+
+</main>
+
+<footer>
+  <span>11.–24. juuli 2025</span>
+  <span>tere tulemast tagasi 🇪🇪</span>
+</footer>
+
+<script>
+  const searchEl = document.getElementById('search');
+  const clearBtn = document.getElementById('clearBtn');
+  const noResults = document.getElementById('noResults');
+  const stops = document.querySelectorAll('.stop');
+  const countryChips = document.querySelectorAll('.country-chip');
+  
+  let activeCountryFilter = null;
+
+  // ── FILTER LOGIC (COMBINING SEARCH + COUNTRY CHIPS) ──
+  function filter() {
+    const q = searchEl.value.trim().toLowerCase();
+    clearBtn.classList.toggle('vis', q.length > 0);
+    
+    let visibleCount = 0;
+    
+    stops.forEach(stop => {
+      const country = stop.dataset.country;
+      
+      // Text Match
+      const hay = [
+        stop.dataset.search || '',
+        stop.querySelector('.stop-title')?.textContent || '',
+        stop.querySelector('.stop-date')?.textContent || '',
+        stop.querySelector('.card-body')?.textContent || ''
+      ].join(' ').toLowerCase();
+      
+      const matchesSearch = !q || hay.includes(q);
+      
+      // Country Tag Match
+      let matchesCountry = true;
+      if (activeCountryFilter) {
+        if (activeCountryFilter === 'EE') {
+          // EE chip matches FERRY stops since they connect Estonia
+          matchesCountry = (country === 'FERRY');
+        } else {
+          matchesCountry = (country === activeCountryFilter);
+        }
+      }
+      
+      const isVisible = matchesSearch && matchesCountry;
+      stop.classList.toggle('hidden', !isVisible);
+      
+      if (isVisible) {
+        visibleCount++;
+      }
+    });
+    
+    noResults.classList.toggle('vis', visibleCount === 0);
+  }
+
+  // Search Input Event Listener
+  searchEl.addEventListener('input', filter);
+  
+  // Clear Button Event Listener
+  clearBtn.addEventListener('click', () => {
+    searchEl.value = '';
+    filter();
+    searchEl.focus();
+  });
+
+  // Country Chip Toggles
+  countryChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const selectedFilter = chip.dataset.filter;
+      
+      if (chip.classList.contains('active')) {
+        // Toggle off
+        chip.classList.remove('active');
+        activeCountryFilter = null;
+      } else {
+        // Toggle on (remove other active states)
+        countryChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCountryFilter = selectedFilter;
+      }
+      
+      filter();
+    });
+  });
+
+  // ── ACCORDION ANIMATION CONTROLLER (SPRINGY DETAILS height animation) ──
+  document.querySelectorAll('details.stop-details').forEach(details => {
+    const summary = details.querySelector('summary.stop-summary');
+    const wrapper = details.querySelector('.card-content-wrapper');
+    let transitionCallback = null;
+
+    summary.addEventListener('click', (e) => {
+      e.preventDefault(); // Control opening state programmatically for animations
+
+      // Clean up any ongoing transition callback
+      if (transitionCallback) {
+        wrapper.removeEventListener('transitionend', transitionCallback);
+        transitionCallback = null;
+      }
+
+      const isOpen = details.hasAttribute('open');
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (isOpen) {
+        // CLOSE ANIMATION
+        if (prefersReducedMotion) {
+          wrapper.style.gridTemplateRows = '0fr';
+          details.removeAttribute('open');
+        } else {
+          wrapper.style.gridTemplateRows = '0fr';
+          transitionCallback = (ev) => {
+            if (ev.propertyName === 'grid-template-rows') {
+              details.removeAttribute('open');
+              wrapper.removeEventListener('transitionend', transitionCallback);
+              transitionCallback = null;
+            }
+          };
+          wrapper.addEventListener('transitionend', transitionCallback);
+        }
+      } else {
+        // OPEN ANIMATION
+        details.setAttribute('open', '');
+        // Force Reflow
+        wrapper.getBoundingClientRect();
+        wrapper.style.gridTemplateRows = '1fr';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
